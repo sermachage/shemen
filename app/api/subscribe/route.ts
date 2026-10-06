@@ -1,5 +1,10 @@
-import { NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabaseClient';
+
+const jsonResponse = (body: unknown, status = 200) =>
+  new Response(JSON.stringify(body), {
+    status,
+    headers: { 'Content-Type': 'application/json' },
+  });
 
 export async function POST(req: Request) {
   const { name, email } = await req.json();
@@ -8,8 +13,8 @@ export async function POST(req: Request) {
 
   if (error) {
     console.error('Supabase insert failed:', error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    return jsonResponse({ error: error.message }, 500);
   }
 
-  return NextResponse.json({ message: 'You’re on the A-list 🥂' });
+  return jsonResponse({ message: 'You’re on the A-list 🥂' });
 }
