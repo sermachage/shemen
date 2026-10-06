@@ -20,6 +20,10 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Supabase setup
+
+Apply `supabase/migrations/20261006130000_create_waiting_list.sql` to the connected Supabase project before deploying. The waitlist API requires the `public.waiting_list` table and its public insert policy.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

@@ -7,9 +7,15 @@ const jsonResponse = (body: unknown, status = 200) =>
   });
 
 export async function POST(req: Request) {
-  const { name, email } = await req.json();
+  const body = await req.json();
+  const name = typeof body.name === "string" ? body.name.trim() : "";
+  const email = typeof body.email === "string" ? body.email.trim() : "";
 
-  const { error } = await supabase.from('waiting-list').insert([{ name, email }]);
+  if (!name || !email) {
+    return jsonResponse({ error: "Name and email are required." }, 400);
+  }
+
+  const { error } = await supabase.from("waiting_list").insert([{ name, email }]);
 
   if (error) {
     console.error('Supabase insert failed:', error);
