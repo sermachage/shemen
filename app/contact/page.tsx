@@ -1,8 +1,14 @@
 "use client";
 import Link from "next/link";
-import { useEffect } from "react";
+import { FormEvent, useEffect, useState } from "react";
 
 export default function Contact() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [feedback, setFeedback] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   useEffect(() => {
     // Apply background image to the body element
     document.body.style.backgroundImage = "url('bgnow.jpeg')";
@@ -12,6 +18,33 @@ export default function Contact() {
       document.body.style.backgroundImage = "";
     };
   }, []);
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setFeedback("");
+
+    try {
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Contact form submission failed");
+      }
+
+      setFeedback("Thanks for reaching out. We’ll get back to you soon!");
+      setName("");
+      setEmail("");
+      setMessage("");
+    } catch {
+      setFeedback("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="fullpage-container">
@@ -32,26 +65,26 @@ export default function Contact() {
 
           <div className="info-item">
             <EmailIcon />
-            <p>info@shemenedge.com</p>
+            <p>info@darasanihub.com</p>
           </div>
 
           <div className="info-item">
             <PhoneIcon />
-            <p>+254 786 576 787</p>
+            <p>+254 707800048</p>
           </div>
 
           <div className="contact-social">
             <Link
-              href="https://www.instagram.com/shemen_edge/"
+              href="https://www.instagram.com/darasanihub/"
               className="social-icon-light"
             >
               <InstagramIcon />
             </Link>
-            <Link href="https://x.com/shemenedge" className="social-icon-light">
+            <Link href="https://x.com/darasanihub" className="social-icon-light">
               <XIcon />
             </Link>
             <Link
-              href="https://www.linkedin.com/company/shemen-edge-consultancy"
+              href="https://www.linkedin.com/company/darasanihub"
               className="social-icon-light"
             >
               <LinkedInIcon />
@@ -63,21 +96,35 @@ export default function Contact() {
           <h2>Get in Touch</h2>
           <p className="subtitle-small">Feel free to drop us a line below!</p>
 
-          <form>
-            <input type="text" placeholder="Your name" className="form-input" />
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Your name"
+              className="form-input"
+              value={name}
+              required
+              onChange={(event) => setName(event.target.value)}
+            />
             <input
               type="email"
               placeholder="Your email"
               className="form-input"
+              value={email}
+              required
+              onChange={(event) => setEmail(event.target.value)}
             />
             <textarea
               placeholder="Type your message here..."
               className="form-textarea"
-            ></textarea>
-            <button type="button" className="send-button">
-              SEND
+              value={message}
+              required
+              onChange={(event) => setMessage(event.target.value)}
+            />
+            <button type="submit" className="send-button" disabled={isSubmitting}>
+              {isSubmitting ? "SENDING..." : "SEND"}
             </button>
           </form>
+          {feedback && <p className="mt-4 text-sm italic">{feedback}</p>}
         </div>
       </div>
     </div>

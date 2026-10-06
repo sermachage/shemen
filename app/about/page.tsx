@@ -26,20 +26,22 @@ export default function About() {
           <h2>Our Services</h2>
 
           <div className="about-text">
-            <p>BUSINESS DEVELOPMENT</p>
+            <p>PROFFESION LEARNING</p>
             <p>
-              Strategic planning, market research, and growth strategies to
-              drive your organization forward
+​Whether you are looking for live in-person training, remote professional development, or job-embedded support, we will customize a plan to meet your needs.  
             </p>
-            <p>RISK MANAGEMENT & COMPLIANCE</p>
+            
+            <p>Individualized Student Supports</p>
             <p>
-              Expert guidance on risk assessment, mitigation strategies, and
-              regulatory compliance
+We offer a range of supports to ensure that students with disabilities are making the progress they deserve and are capable of achieving.  
             </p>
-            <p>TRAINING & FACILITATION</p>
+             <p>DEVELOPMENT</p>
             <p>
-              Founded in 2023, our mission is to combine cutting-edge technology
-              with thoughtful design.
+              We support systems in analyzing their current programming, providing  recommendations for improvement, and offering implementation support. 
+            </p>
+            <p>RESOURCES</p>
+            <p>
+              Connections to evidence-based resources that support the inclusion of individuals with disabilities in all walks of life.
             </p>
           </div>
 
