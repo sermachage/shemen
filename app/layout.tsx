@@ -13,34 +13,34 @@ const raleway = Raleway({
 
 export const metadata: Metadata = {
   title: {
-    default: "ShemenEdge Consultancy",
-    template: "%s | ShemenEdge Consultancy",
+    default: "Darasani Hub",
+    template: "%s | Darasani Hub",
   },
   description:
     "Empowering businesses with strategic consulting and innovative solutions.",
-  keywords: ["business consulting", "strategy", "ShemenEdge", "growth"],
-  metadataBase: new URL("https://shemenedge.com"),
+  keywords: ["business consulting", "strategy", "Darasani Hub", "growth"],
+  metadataBase: new URL("https://darasanihub.com"),
   alternates: {
-    canonical: "https://shemenedge.com",
+    canonical: "https://darasanihub.com",
   },
   openGraph: {
-    title: "ShemenEdge Consultancy",
+    title: "Darasani Hub",
     description: "Strategic business consulting to power your growth.",
-    url: "https://shemenedge.com",
-    siteName: "ShemenEdge Consultancy",
+    url: "https://darasanihub.com",
+    siteName: "Darasani Hub",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "ShemenEdge logo and slogan",
+        alt: "Darasani Hub logo and slogan",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "ShemenEdge Consultancy",
+    title: "Darasani Hub",
     description: "Your partner in business growth.",
     images: ["/og-image.jpg"],
   },
@@ -59,11 +59,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              name: "ShemenEdge Consultancy",
-              url: "https://shemenedge.com",
-              logo: "https://shemenedge.com/logo.png",
+              name: "Darasani Hub",
+              url: "https://darasanihub.com",
+              logo: "https://darasanihub.com/logo.png",
               sameAs: [
-                "https://www.linkedin.com/company/shemen-edge-consultancy/",
+                "https://www.linkedin.com/company/darasani-hub/",
               ],
             }),
           }}

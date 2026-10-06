@@ -46,7 +46,7 @@ const Home: FC = () => {
         <div className="navbar">
           <div className="logo">
             <Link href="/">
-              <img src="logo.png" alt="Logo" className="logo-image" />
+              <img src="primarylogo.png" alt="Logo" className="logo-image" />
             </Link>
           </div>
 
